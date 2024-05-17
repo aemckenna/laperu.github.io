@@ -13,26 +13,13 @@
     <main>
         <section id="week1">
             <h2>Week 1</h2>
-            <div id="imageContainer"></div>
+            <!-- Replace 'YOUR_IMAGE_URL' with the direct link to your image -->
+            <img src="https://drive.google.com/uc?id=11mU4tOBnRnmMPIbfivRo4APjanenLTWi" alt="Peru Trip Image">
         </section>
     </main>
     <footer>
         <p>© 2024 Peru Trip Itinerary</p>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const response = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL');
-            const imageUrls = await response.json();
-            const imageContainer = document.getElementById('imageContainer');
-
-            imageUrls.forEach(imageUrl => {
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                img.alt = 'Image';
-                imageContainer.appendChild(img);
-            });
-        });
-    </script>
 </body>
 </html>
 
