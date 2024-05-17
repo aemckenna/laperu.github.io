@@ -13,19 +13,26 @@
     <main>
         <section id="week1">
             <h2>Week 1</h2>
-            <!-- Example day with image -->
-            <div class="day">
-                <h3>Day 1: Lima</h3>
-                <p>Arrive in Lima, explore Miraflores.</p>
-                <img src="path/to/your/image1.jpg" alt="Miraflores">
-            </div>
+            <div id="imageContainer"></div>
         </section>
-        <!-- Repeat for other weeks -->
     </main>
     <footer>
         <p>© 2024 Peru Trip Itinerary</p>
     </footer>
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const response = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL');
+            const imageUrls = await response.json();
+            const imageContainer = document.getElementById('imageContainer');
+
+            imageUrls.forEach(imageUrl => {
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = 'Image';
+                imageContainer.appendChild(img);
+            });
+        });
+    </script>
 </body>
 </html>
 

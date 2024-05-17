@@ -1,23 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const itinerary = {
-        week1: [
-            { day: 'Day 1', activity: 'Arrive in Lima, explore Miraflores', image: 'path/to/your/image1.jpg' },
-            { day: 'Day 2', activity: 'Visit Huaca Pucllana, Larcomar', image: 'path/to/your/image2.jpg' },
-            // More days...
-        ],
-        // More weeks...
-    };
-
-    Object.keys(itinerary).forEach(week => {
-        const section = document.getElementById(week);
-        itinerary[week].forEach(item => {
-            const div = document.createElement('div');
-            div.classList.add('day');
-            div.innerHTML = `<h3>${item.day}</h3>
-                             <p>${item.activity}</p>
-                             <img src="${item.image}" alt="${item.activity}">`;
-            section.appendChild(div);
-        });
-    });
-});
+function doGet() {
+  var folderId = '13X6l3buQ8JK7P71FtBmjzT8s2ehwdEYn';
+  var folder = DriveApp.getFolderById(folderId);
+  var files = folder.getFiles();
+  
+  var imageUrls = [];
+  while (files.hasNext()) {
+    var file = files.next();
+    var url = 'https://drive.google.com/uc?export=view&id=' + file.getId();
+    imageUrls.push(url);
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify(imageUrls))
+      .setMimeType(ContentService.MimeType.JSON);
+}
 
